@@ -1,64 +1,43 @@
-<div class="flex flex-col">
-    <div class="overflow-x-auto">
-      <div class="p-1.5 min-w-full inline-block align-middle">
-        <div class="overflow-hidden">
-          <table class="min-w-full divide-y divide-gray-200">
-            <thead>
-              <tr>
-                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Name</th>
-                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Age</th>
-                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Address</th>
-                <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="odd:bg-white even:bg-gray-100">
-                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">John Brown</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">45</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">New York No. 1 Lake Park</td>
-                <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
-                  <button type="button" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none">Delete</button>
-                </td>
-              </tr>
-  
-              <tr class="odd:bg-white even:bg-gray-100">
-                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">Jim Green</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">27</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">London No. 1 Lake Park</td>
-                <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
-                  <button type="button" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none">Delete</button>
-                </td>
-              </tr>
-  
-              <tr class="odd:bg-white even:bg-gray-100">
-                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">Joe Black</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">31</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">Sidney No. 1 Lake Park</td>
-                <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
-                  <button type="button" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none">Delete</button>
-                </td>
-              </tr>
-  
-              <tr class="odd:bg-white even:bg-gray-100">
-                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">Edward King</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">16</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">LA No. 1 Lake Park</td>
-                <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
-                  <button type="button" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none">Delete</button>
-                </td>
-              </tr>
-  
-              <tr class="odd:bg-white even:bg-gray-100">
-                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">Jim Red</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">45</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">Melbourne No. 1 Lake Park</td>
-                <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
-                  <button type="button" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none">Delete</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
+<?php
+require_once './connection.php';
+global $conn;
+
+?>
+  <div class="p-10 w-full">
+  <table class="text-sm text-gray-500 w-full border">
+          <thead class="">
+              <tr class="text-gray-50  bg-blue-800 font-bold">
+              <td class="w-auto py-2 px-4 whitespace-nowrap text-right">ردیف</td>
+              <td class="w-auto py-2 px-4 whitespace-nowrap text-right">اسم</td>
+              <td class="w-auto py-2 px-4 whitespace-nowrap text-right">سن</td>
+              <td class="w-auto py-2 px-4 whitespace-nowrap text-right">جنسیت</td>
+              <td class="w-auto py-2 px-4 whitespace-nowrap text-right">موبایل</td>
+              <td class="w-auto py-2 px-4 whitespace-nowrap text-right">عکس</td>
+            </tr>
+          </thead>
+          <tbody class="">
+            <?php
+            $rows = $conn->query('SELECT * FROM emp');
+            if($rows->num_rows):
+              $index = 1;
+              while ($row = $rows->fetch_assoc()):
+                ?>                
+              <tr class="odd:bg-white even:bg-gray-100  border-b">
+              <td class="w-auto py-6 px-4 whitespace-nowrap text-right"><?= $index++ ?></td>
+              <td class="w-auto py-6 px-4 whitespace-nowrap text-right"><?= $row['name'] ?></td>
+              <td class="w-auto py-6 px-4 whitespace-nowrap text-right"><?= $row['age'] ?></td>
+              <td class="w-auto py-6 px-4 whitespace-nowrap text-right"><?= $row['gender'] ?></td>
+              <td class="w-auto py-6 px-4 whitespace-nowrap text-right"><?= $row['phone'] ?></td>
+              <td class="w-auto py-6 px-4 whitespace-nowrap text-right"><img src="<?=$row['image']?>" alt="" width="50px" height="50px"></td>
+            </tr>
+            <?php
+        endwhile;
+    else:
+        ?>
+        <tr>
+            <td colspan="5">رکوردی یافت نشد</td>
+        </tr>
+    <?php endif; ?>
+          </tbody>
+        </table>
   </div>

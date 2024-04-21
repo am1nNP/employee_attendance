@@ -1,3 +1,9 @@
+<?php
+session_start();
+require_once 'functions.php';
+check_login();
+?>
+
 <!doctype html>
 <html dir="rtl">
 <head>
@@ -100,28 +106,34 @@
                                 <button onclick="myfunction()" class="flex gap-5 h-7 items-center w-full">
                                 <img src="./img/user.jpg" alt="نمایه" class="rounded-full w-8 h-7">
                                 <div class="flex items-center h-7 gap-2 lg:w-32 sm:w-28 sm:text-sm">
-                                <span class="h-full font-bold sm:font-semibold sm:mt-2"><?php echo 'نام کاربر' // echo $_SESSION['username']?></span>
+                                <span class="h-full font-bold sm:font-semibold sm:mt-2"><?php echo $_SESSION['userlogin']?></span>
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-full">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                                           </svg>  
                                     </div>
                                 </button>
-                                <div id="btn" class="w-32 h-20 absolute top-24 ring-[1px] ring-slate-200 bg-white z-20 right-0 flex flex-col items-center justify-center rounded-md shadow-lg opacity-0  ease-linear duration-[40ms] ">
-                                    <button class="w-full pt-1 pb-2 hover:bg-slate-50">پروفایل شما</button>
-                                    <button class="w-full pt-1 pb-2 hover:bg-slate-50">خروج</button>
+                                <div id="btn" class="invisible w-32 h-20 absolute top-24 ring-[1px] ring-slate-200 bg-white z-20 right-0 flex flex-col items-center justify-center rounded-md shadow-lg opacity-0  ease-linear duration-[40ms] ">
+                                    <a class="w-full pt-1 pb-2 hover:bg-slate-50 text-center cursor-pointer">پروفایل شما</a>
+                                    <a href="./login.php" class="w-full pt-1 pb-2 hover:bg-slate-50 text-center cursor-pointer">خروج</a>
                                 </div>
                             </div>
                     </div>                     
                 </div>
             </div>
             <div id="tableContent" class="Main_content  m-2 bg-[#f5f5f5] rounded-md shadow-md shadow-slate-400">
-
+                <?php
+                if(isset($_SESSION["empInsert"])){
+                    include_once './empList.php';
+                    unset($_SESSION["empInsert"]);
+                }
+                ?>
             </div>
         </div>
     </div>
     <script>
         function myfunction(){
             document.getElementById("btn").classList.toggle("opacity-100");
+            document.getElementById("btn").classList.toggle("invisible");
         }
         function btn_side(){
             document.getElementById("dark_banner").classList.remove("hidden");
