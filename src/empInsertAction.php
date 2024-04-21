@@ -9,11 +9,9 @@ if (isset($_POST['submit'])) {
         $gender = $conn->escape_string($_POST["gender"]);
         $phone = $conn->escape_string($_POST["phone"]);
         $image = $conn->escape_string($_POST["image"]);
-        
-
-        
+        $targetImage="uploads/".$image;          
         $query = 'INSERT INTO emp(name,age,gender,phone,image)';
-        $query .= "VALUES('$name', '$age','$gender','$phone','$image')";
+        $query .= "VALUES('$name', '$age','$gender','$phone','$targetImage')";
     if($conn->query($query)){
         if (mysqli_affected_rows($conn)) {
             $_SESSION["empInsert"]="true";

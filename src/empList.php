@@ -28,7 +28,7 @@ global $conn;
               <td class="w-auto py-6 px-4 whitespace-nowrap text-right"><?= $row['age'] ?></td>
               <td class="w-auto py-6 px-4 whitespace-nowrap text-right"><?= $row['gender'] ?></td>
               <td class="w-auto py-6 px-4 whitespace-nowrap text-right"><?= $row['phone'] ?></td>
-              <td class="w-auto py-6 px-4 whitespace-nowrap text-right"><img src="<?=$row['image']?>" alt="" width="50px" height="50px"></td>
+              <td class="w-auto py-6 px-4 whitespace-nowrap text-right"><img src="<?=$row['image']?>" alt="" width="100px" height="100px"></td>
             </tr>
             <?php
         endwhile;
