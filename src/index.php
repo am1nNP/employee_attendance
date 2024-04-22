@@ -125,6 +125,13 @@ check_login();
                 if(isset($_SESSION["empInsert"])){
                     include_once './empList.php';
                     unset($_SESSION["empInsert"]);
+                }else if(isset($_SESSION["empDelete"])){
+                    include_once './empList.php';
+                    unset($_SESSION["empDelete"]);
+                }
+                else if(isset($_SESSION["empEdit"])){
+                    include_once './empList.php';
+                    unset($_SESSION["empEdit"]);
                 }
                 ?>
             </div>
@@ -173,6 +180,8 @@ check_login();
             xhr.open("GET", "empList.php", true);
             xhr.send();
         });
+
+
         document.getElementById("empInsert").addEventListener("click", function(e) {
             e.preventDefault();
             var xhr = new XMLHttpRequest();
@@ -182,6 +191,32 @@ check_login();
                 }
             };
             xhr.open("GET", "empInsert.php", true);
+            xhr.send();
+        });
+
+
+        document.getElementById("empDelete").addEventListener("click", function(e) {
+            e.preventDefault();
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    document.getElementById("tableContent").innerHTML = xhr.responseText;
+                }
+            };
+            xhr.open("GET", "empDelete.php", true);
+            xhr.send();
+        });
+
+
+        document.getElementById("empEdit").addEventListener("click", function(e) {
+            e.preventDefault();
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    document.getElementById("tableContent").innerHTML = xhr.responseText;
+                }
+            };
+            xhr.open("GET", "empEdit.php", true);
             xhr.send();
         });
 
