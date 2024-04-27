@@ -133,6 +133,14 @@ check_login();
                     include_once './empList.php';
                     unset($_SESSION["empEdit"]);
                 }
+                else if(isset($_SESSION["empSet"])){
+                    include_once './empSetList.php';
+                    unset($_SESSION["empSet"]);
+                }
+                else if(isset($_SESSION["empSetDelete"])){
+                    include_once './empSetList.php';
+                    unset($_SESSION["empSetDelete"]);
+                }
                 ?>
             </div>
         </div>
@@ -217,6 +225,32 @@ check_login();
                 }
             };
             xhr.open("GET", "empEdit.php", true);
+            xhr.send();
+        });
+        
+        
+        document.getElementById("empSet").addEventListener("click", function(e) {
+            e.preventDefault();
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    document.getElementById("tableContent").innerHTML = xhr.responseText;
+                }
+            };
+            xhr.open("GET", "empSet.php", true);
+            xhr.send();
+        });
+
+
+        document.getElementById("empSetList").addEventListener("click", function(e) {
+            e.preventDefault();
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    document.getElementById("tableContent").innerHTML = xhr.responseText;
+                }
+            };
+            xhr.open("GET", "empSetList.php", true);
             xhr.send();
         });
 
