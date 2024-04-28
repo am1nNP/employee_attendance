@@ -3,10 +3,10 @@ require_once './connection.php';
 global $conn;
 
 ?>
-  <div class="p-10 w-full">
-  <table class="text-sm text-gray-500 w-full border">
+  <div class="p-10 ">
+  <table class="text-sm text-gray-500 w-full border ">
           <thead class="">
-              <tr class="text-gray-50  bg-blue-800 font-bold">
+              <tr class="text-gray-50  bg-blue-800 font-bold ">
               <td class="w-auto py-2 px-4 whitespace-nowrap text-right">ردیف</td>
               <td class="w-auto py-2 px-4 whitespace-nowrap text-right">اسم</td>
               <td class="w-auto py-2 px-4 whitespace-nowrap text-right">سن</td>
@@ -22,7 +22,7 @@ global $conn;
               $index = 1;
               while ($row = $rows->fetch_assoc()):
                 ?>                
-              <tr class="odd:bg-white even:bg-gray-100  border-b">
+              <tr class="odd:bg-white even:bg-gray-100  border-b ">
               <td class="w-auto py-6 px-4 whitespace-nowrap text-right"><?= $index++ ?></td>
               <td class="w-auto py-6 px-4 whitespace-nowrap text-right"><?= $row['name'] ?></td>
               <td class="w-auto py-6 px-4 whitespace-nowrap text-right"><?= $row['age'] ?></td>

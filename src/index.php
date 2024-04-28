@@ -14,7 +14,7 @@ check_login();
 <body class="h-svh">
     <div class="root h-full  flex flex-row">
         <div id="nav_side" class="right_section sm:w-0 md:w-0 lg:w-72 sm:invisible fixed flex md:invisible lg:visible z-20 bg-indigo-700 flex-col lg:right-0 sm:-right-72 h-screen md:-right-72">
-            <button id="btn_close" onclick="btn_close()" class="text-white absolute md:right-80 sm:right-[22rem] top-5 lg:hidden">
+            <button id="btn_close" onclick="btn_close()" class="text-white absolute md:right-80 sm:right-[20.5rem] top-5 lg:hidden">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                   </svg>                  
@@ -80,7 +80,7 @@ check_login();
             </div>
         </div>
         <div id="dark_banner" class="bg-slate-600 sm:1/4 w-full h-screen lg:hidden absolute z-10 transition-all ease-linear duration-200 lg:invisible md:invisible sm:invisible md:opacity-0 sm:opacity-0"></div>
-        <div class="left_section sm:w-full lg:w-11/12 lg:mr-72 h-screen">
+        <div class="left_section  lg:w-11/12 lg:mr-72 h-screen">
             <div class="nav sm:w-full md:w-full h-[12%] flex border-b-2 pl-5 sm:pl-1">
                 <div class="search_bar flex lg:w-3/4 sm:w-full md:w-4/5 h-full items-center lg:pr-10 md:gap-4 md:pr-5 sm:pr-1 sm:gap-3">
                     <button onclick="btn_side()" class=" lg:hidden">
